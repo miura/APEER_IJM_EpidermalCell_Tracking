@@ -8,36 +8,17 @@
 // General global vars
 RESULTSPATH = "/output/";
 BATCHMODE = "true";
+libmacro = "/apeerlib.ijm";
 
 // Read JSON Variables
-call("CallLog.shout", "calllog Trying to read WFE_JSON");
-
-WFE_file = "/params/WFE_input_params.json";
-if (!File.exists(WFE_file)) {
-	call("CallLog.shout", "WFE_input_params.json does not exist... exiting...");
-	eval("script", "System.exit(0);");
-	} 
-	else {
-		call("CallLog.shout", "WFE_input_params.json found... reading file...");
-		WFE_JSON = File.openAsString(WFE_file);
-	}
-	
-call("CallLog.shout", "WFE_JSON contents: " + WFE_JSON);
+WFE_JSON = runMacro( libmacro , "captureWFE_JSON");
 
 // Read JSON WFE Parameters
 JSON_READER = "/JSON_Read.js";
-
-if (!File.exists(JSON_READER)) {
-	call("CallLog.shout", "JSON_Read.js does not exist... exiting...");
-	eval("script", "System.exit(0);");
-	} 
-	else {
-		call("CallLog.shout", "JSON_Read.js found... reading file...");
-	}
-
-call("CallLog.shout", "Reading JSON Parameters");
+runMacro( libmacro , "checkJSON_ReadExists;" + JSON_READER);
 
 // Get WFE Json values as global vars
+call("CallLog.shout", "Reading JSON Parameters");
 INPUTFILES = runMacro(JSON_READER, "settings.input_files[0]");
 INPUTSTACK = runMacro(JSON_READER, "settings.input_files[0]");
 PREFIX = runMacro(JSON_READER, "settings.prefix");
@@ -53,8 +34,8 @@ IMAGEDIR_WFE = substring(INPUTFILES, 0, path_substring+1);
 main();
 
 function main() {
-
-	call("CallLog.shout", "Starting opening files, time: " + currentTime());
+	tt = runMacro( libmacro , "currentTime");
+	call("CallLog.shout", "Starting opening files, time: " + tt);
 	
 	if (BATCHMODE=="true") {
 		setBatchMode(true);
@@ -142,7 +123,8 @@ function main() {
  	savingResults( RESULTSNAME );
  	jsonOut();
 
-	call("CallLog.shout", "DONE! " + currentTime());
+	tt = runMacro( libmacro , "currentTime");
+	call("CallLog.shout", "Starting opening files, time: " + tt);
 	run("Close All");
 	call("CallLog.shout", "Closed");
 	//shout("test print");
@@ -257,35 +239,3 @@ function jsonOut() {
 	
 	call("CallLog.shout", "Done with JSON Output");
 }
-
-/*
- * functions for support tasks
- */
-// Get SystemTimer
- function currentTime() {
-     MonthNames = newArray("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
-     DayNames = newArray("Sun", "Mon","Tue","Wed","Thu","Fri","Sat");
-
-     getDateAndTime(year, month, dayOfWeek, dayOfMonth, hour, minute, second, msec);
-
-     timeString = DayNames[dayOfWeek]+" ";
-
-     if (dayOfMonth<10) {timeString = timeString + "0";}
-     timeString = timeString+dayOfMonth+"-"+MonthNames[month]+"-"+year+" @ ";
-
-     if (hour<10) {timeString = timeString + "0";}
-     timeString = timeString+hour+":";
-
-     if (minute<10) {timeString = timeString + "0";}
-     timeString = timeString+minute+":";
-
-     if (second<10) {timeString = timeString + "0";}
-     timeString = timeString+second;
-
-     return timeString;
-} 
-
-function shout( out ){
-	sc = "java.lang.System.out.println( '" + out + "' )";
-	eval("js", sc);
-} 
