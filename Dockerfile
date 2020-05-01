@@ -3,8 +3,8 @@
 # Version: 0.1
 
 # Pull base CZSIP/Fiji.
-# FROM czsip/fiji_linux64_baseimage:latest
-FROM czsip/fiji
+FROM czsip/fiji_linux64_baseimage:latest
+#FROM czsip/fiji
 
 #get additional stuff
 RUN apt-get update; exit 0 && \
@@ -29,7 +29,7 @@ RUN apt-get install -y \
                            
 # Install additional Fiji Plugins
 COPY ./CallLog.class /Fiji.app/plugins
-COPY ./generate_stack.ijm /
+COPY ./*.ijm /
 COPY ./JSON_Read.js /
 COPY ./start.sh /
 COPY ./font.conf /etc/fonts/fonts.conf
