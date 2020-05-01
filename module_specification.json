@@ -6,12 +6,20 @@
             },
             "prefix": {
                 "type:string": {},
-                "default": "no-filter"
+                "default": "Tiff"
             },
-            "name": {
+            "labelstack_name": {
                 "type:string": {},
-                "default": "output"
-            }
+                "default": "Track_Labeled_Cells"
+            },
+            "trackstack_name": {
+                "type:string": {},
+                "default": "Track_Overlay"
+            },
+            "results_filename": {
+                "type:string": {},
+                "default": "tracking_results.csv"
+            }            
         },
         "outputs": {
             "RESULTSDATA": {
@@ -21,17 +29,33 @@
     },
     "ui": {
         "inputs": {
+            "input_files": {
+                "index": 0,
+                "widget:none": null,
+                "label": "Input files"
+            },
             "prefix": {
                 "index": 1,
                 "label": "Filter files (e.g .png)",
                 "widget:textbox": {}
             },
-            "name": {
+            "labelstack_name": {
                 "index": 2,
                 "label": "Filename (default output.tif)",
                 "widget:textbox": {}
-            }
-        }
+            },
+            "trackstack_name": {
+                "index": 2,
+                "label": "Filename (default output.tif)",
+                "widget:textbox": {}
+            },
+            "results_filename": {
+                "index": 2,
+                "label": "Filename (default output.tif)",
+                "widget:textbox": {}
+            }            
+        },
+        "outputs": {}
     },
     "image": "camodules.azurecr.io/stackgen:latest"
 }
