@@ -22,8 +22,14 @@
             }            
         },
         "outputs": {
-            "RESULTSDATA": {
-                "type:list[file]": {}
+            "labelstack": {
+                "type:file": {}
+            },
+            "trackstack": {
+                "type:file": {}
+            },    
+            "tracking_results": {
+                "type:file": {}
             }
         }
     },
@@ -40,22 +46,38 @@
                 "widget:textbox": {}
             },
             "labelstack_name": {
-                "index": 2,
+                "index": 3,
                 "label": "Filename (default output.tif)",
                 "widget:textbox": {}
             },
             "trackstack_name": {
-                "index": 2,
+                "index": 4,
                 "label": "Filename (default output.tif)",
                 "widget:textbox": {}
             },
             "results_filename": {
-                "index": 2,
+                "index": 5,
                 "label": "Filename (default output.tif)",
                 "widget:textbox": {}
             }            
         },
-        "outputs": {}
+        "outputs": {
+            "labelstack": {
+                "index": 6,
+                "label": "Cell Labeled Image Stack",
+                "description": "Segmented images with labels for each cell"
+            },
+            "trackstack": {
+                "index": 7,
+                "label": "Track-Overlayed Image Stack",
+                "description": "Tracks plotted over the segmented cells"
+            },            
+            "tracking_results": {
+                "index": 8,
+                "label": "CSV file with tracks",
+                "description": "CSV file with trackID, x and y coordinates and their time points for each track"
+            }
+        }      
     },
     "image": "camodules.azurecr.io/stackgen:latest"
 }
