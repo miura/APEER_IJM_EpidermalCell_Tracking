@@ -22,14 +22,8 @@
             }            
         },
         "outputs": {
-            "labelstack": {
-                "type:file": {}
-            },
-            "trackstack": {
-                "type:file": {}
-            },    
-            "tracking_results": {
-                "type:file": {}
+            "RESULTSDATA": {
+                "type:list[file]": {}
             }
         }
     },
@@ -61,23 +55,7 @@
                 "widget:textbox": {}
             }            
         },
-        "outputs": {
-            "labelstack": {
-                "index": 6,
-                "label": "Cell Labeled Image Stack",
-                "description": "Segmented images with labels for each cell"
-            },
-            "trackstack": {
-                "index": 7,
-                "label": "Track-Overlayed Image Stack",
-                "description": "Tracks plotted over the segmented cells"
-            },            
-            "tracking_results": {
-                "index": 8,
-                "label": "CSV file with tracks",
-                "description": "CSV file with trackID, x and y coordinates and their time points for each track"
-            }
-        }      
+        "outputs": {}      
     },
     "image": "camodules.azurecr.io/stackgen:latest"
 }
