@@ -105,7 +105,7 @@ function main() {
 	}
 	run("glasbey inverted");
  	savingStack( STACKNAME );
-
+ 	
 	call("CallLog.shout", "Plotting Tracks...:" + OUTTRACKSTACKNAME);
 	// plotting tracks
 	selectImage( orgID );
@@ -121,10 +121,18 @@ function main() {
 	call("CallLog.shout", "Saving results as CSV..."); 
 	//saveAs("Results", "/Users/miura/Downloads/Results.csv");	 	
  	savingResults( RESULTSNAME );
- 	jsonOut();
+ 	
+ 	//jsonOut();
+ 	filelist = STACKNAME + ".tif,"; //used for JSON out
+ 	filelist = filelist + OUTTRACKSTACKNAME + ".tif,";
+ 	filelist = filelist + RESULTSNAME;
+ 	jsonarg = "JSON_OUT;" + RESULTSPATH + "," + filelist;
+ 	call("CallLog.shout", "...JSON args:" + jsonarg);
+ 	out = runMacro( libmacro , jsonarg);
+ 	call("CallLog.shout", "... JSON out written: " + out);
 
 	tt = runMacro( libmacro , "currentTime");
-	call("CallLog.shout", "Starting opening files, time: " + tt);
+	call("CallLog.shout", "Finished processing, time: " + tt);
 	run("Close All");
 	call("CallLog.shout", "Closed");
 	//shout("test print");

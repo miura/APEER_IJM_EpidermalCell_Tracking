@@ -2,6 +2,10 @@ arg = getArgument();
 
 args = split(arg, ";");
 command = args[0];
+//if the lenght of args is >1, then it has arguments for that command. 
+//in this case, arg[1] can have multiple arguments separated by comma
+// and these arguments are checkd inside each function
+  
 para = "";
 if (args.length > 1)
 	para = args[1];
@@ -15,6 +19,8 @@ if (command == "test"){
 	out = captureWFE_JSON();
 } else if (command == "checkJSON_ReadExists"){
 	out = checkJSON_ReadExists( para ); // out is null ""
+} else if (command == "JSON_OUT"){
+	out = jsonOutV2( para ); // para should be comma separated values. see function for more details. 
 }
 return out;
 
@@ -79,6 +85,46 @@ function checkJSON_ReadExists( JSON_READER ){
      timeString = timeString+second;
 
      return timeString;
+}
+
+//parameters
+// index 0: output folder path
+// index 1 - : filenames with extensions. 
+function jsonOutV2( parameters ) {
+	pA = split(parameters, ",");
+	RESULTSPATH = pA[0];
+	call("CallLog.shout", "... results path:" + RESULTSPATH);	
+	jsonout = File.open(RESULTSPATH + "json_out.txt");
+	
+	print(jsonout,"{");
+	print(jsonout,"\"RESULTSDATA\": [");
+	for (i = 1; i < pA.length; i++){
+		if (i == pA.length -1)
+			print(jsonout,"\t\"" + pA[i] + "\"");
+		else 
+			print(jsonout,"\t\"" + pA[i] + "\",");
+	}	
+	print(jsonout,"\t]");
+	print(jsonout,"}");
+	File.close(jsonout);
+	
+	WFEOUTPUT = getWFEOUTPUT();
+	call("CallLog.shout", "... WFEOUTPUT: " + WFEOUTPUT);
+	if (WFEOUTPUT != "none"){
+		File.rename(RESULTSPATH + "json_out.txt", RESULTSPATH + WFEOUTPUT);
+		//call("CallLog.shout", "... renamed");
+		return "renamed";
+	}
+	return "not renamed";
 } 
 
+function getWFEOUTPUT(){
+	JSON_READER = "/JSON_Read.js";
+	if (File.exists(JSON_READER)) {	
+		WFEOUTPUT = runMacro(JSON_READER, "settings.WFE_output_params_file");
+	} else {
+		WFEOUTPUT = "none";
+	}
+	return WFEOUTPUT;
+}
 
