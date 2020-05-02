@@ -22,7 +22,13 @@
             }            
         },
         "outputs": {
-            "RESULTSDATA": {
+            "RESULTSDATA1": {
+                "type:list[file]": {}
+            },
+            "RESULTSDATA2": {
+                "type:list[file]": {}
+            },
+            "RESULTSDATA3": {
                 "type:list[file]": {}
             }
         }
@@ -54,8 +60,7 @@
                 "label": "Filename (default output.tif)",
                 "widget:textbox": {}
             }            
-        },
-        "outputs": {}      
+        }    
     },
     "image": "camodules.azurecr.io/stackgen:latest"
 }
