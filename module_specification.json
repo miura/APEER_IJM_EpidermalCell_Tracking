@@ -19,7 +19,7 @@
             "results_filename": {
                 "type:string": {},
                 "default": "tracking_results.csv"
-            }            
+            }
         },
         "outputs": {
             "RESULTSDATA1": {
@@ -29,7 +29,9 @@
                 "type:file": {}
             },
             "RESULTSDATA3": {
-                "type:file": {}
+                "type:file": {
+                  "format": "csv"
+                }
             }
         }
     },
@@ -59,8 +61,24 @@
                 "index": 5,
                 "label": "Filename (default output.tif)",
                 "widget:textbox": {}
-            }            
+            }
         },
-        "outputs": {}    
+        "outputs": {
+            "RESULTSDATA1": {
+                "label": "Label Stack",
+                "index": 1,
+                "description": "Cell Label stack as TIFF"
+            },
+            "RESULTSDATA2": {
+                "label": "Track Stack",
+                "index": 2,
+                "description": "Cell Tracks stack as TIFF"
+            },
+            "RESULTSDATA3": {
+                "label": "Track Table",
+                "index": 3,
+                "description": "Track table as CSV file"
+            }
+        }
     }
 }
