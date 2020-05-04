@@ -223,27 +223,3 @@ function overlayTracks( tracksID, trackcolor ){
 		Overlay.addSelection( trackcolor );
 	}
 }
-
-
-// Generate output.json for WFE
-function jsonOut() {
-	call("CallLog.shout", "Starting JSON Output");
-	jsonout = File.open(RESULTSPATH + "json_out.txt");
-	call("CallLog.shout", "File open: JSON Output");
-	
-	print(jsonout,"{");
-	print(jsonout,"\"RESULTSDATA\": [");
-
-	if (STACKNAME=="output") {
-		print(jsonout,"\t\"/output/output.tif\"");
-	}
-	else {
-		print(jsonout,"\t\"/output/"+ STACKNAME + ".tif\"");
-	}
-	print(jsonout,"\t]");
-	print(jsonout,"}");
-	File.close(jsonout);
-	File.rename(RESULTSPATH + "json_out.txt", RESULTSPATH + WFEOUTPUT);
-	
-	call("CallLog.shout", "Done with JSON Output");
-}
