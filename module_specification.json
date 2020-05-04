@@ -23,13 +23,19 @@
         },
         "outputs": {
             "RESULTSDATA1": {
-                "type:file": {}
+                "type:file": {
+                  "format": "tiff"
+                }
             },
             "RESULTSDATA2": {
-                "type:file": {}
+                "type:file": {
+                  "format": "tiff"
+                }
             },
             "RESULTSDATA3": {
-                "type:file": {}
+                "type:file": {
+                  "format": "csv"
+                }
             }
         }
     },
@@ -60,7 +66,8 @@
                 "label": "Filename (default output.tif)",
                 "widget:textbox": {}
             }            
-        }    
+        },
+        "outputs": {}    
     },
     "image": "camodules.azurecr.io/stackgen:latest"
 }

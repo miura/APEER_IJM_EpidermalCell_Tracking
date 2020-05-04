@@ -132,10 +132,10 @@ function jsonOutV4( parameters ) {
 	for (i = 1; i < pA.length; i++){
 		//print(jsonout,"\"RESULTSDATA\"" + i + ": [");
 		if (i == pA.length -1)
-			print(jsonout,"\"RESULTSDATA" + i + "\" : \"" + pA[i] + "\"");
+			print(jsonout,"\"RESULTSDATA" + i + "\": \"" + pA[i] + "\"");
 			//print(jsonout,"\t]");
 		else 
-			print(jsonout,"\"RESULTSDATA" + i + "\" : \"" + pA[i] + "\",");
+			print(jsonout,"\"RESULTSDATA" + i + "\": \"" + pA[i] + "\",");
 			//print(jsonout,"\t],");
 	}
 	print(jsonout,"}");
