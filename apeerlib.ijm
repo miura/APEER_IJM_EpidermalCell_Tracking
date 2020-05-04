@@ -20,7 +20,7 @@ if (command == "test"){
 } else if (command == "checkJSON_ReadExists"){
 	out = checkJSON_ReadExists( para ); // out is null ""
 } else if (command == "JSON_OUT"){
-	out = jsonOutV4( para ); // para should be comma separated values. see function for more details. 
+	out = jsonOutV5( para ); // para should be comma separated values. see function for more details. 
 }
 return out;
 
@@ -135,7 +135,7 @@ function jsonOutV4( parameters ) {
 			print(jsonout,"\"RESULTSDATA" + i + "\": \"/output/" + pA[i] + "\"");
 			//print(jsonout,"\t]");
 		else 
-			print(jsonout,"\"RESULTSDATA" + i + "\": \"/output/" + pA[i] + "\",");
+			print(jsonout,"\"RESULTSDATA" + i + "\": \"/output/" + pA[i] + "\", ");
 			//print(jsonout,"\t],");
 	}
 	print(jsonout,"}");
@@ -150,6 +150,38 @@ function jsonOutV4( parameters ) {
 	}
 	return "not renamed";
 } 
+
+//parameters
+// index 0: output folder path
+// index 1 - : filenames with extensions. 
+// without brackets. no lists. in one line, no new lines.  
+function jsonOutV5( parameters ) {
+	pA = split(parameters, ",");
+	RESULTSPATH = pA[0];
+	call("CallLog.shout", "... results path:" + RESULTSPATH);	
+	jsonout = File.open(RESULTSPATH + "json_out.txt");
+	outtext = "{";
+	for (i = 1; i < pA.length; i++){
+		if (i == pA.length -1) {
+			outtext = outtext + "\"RESULTSDATA" + i + "\": \"" + RESULTSPATH + pA[i] + "\"";
+		} else {
+			outtext = outtext + "\"RESULTSDATA" + i + "\": \"" + RESULTSPATH + pA[i] + "\",";
+		}
+	}
+	outtext = outtext + "}";
+	print(jsonout, outtext);
+	File.close(jsonout);
+	
+	WFEOUTPUT = getWFEOUTPUT();
+	call("CallLog.shout", "... WFEOUTPUT: " + WFEOUTPUT);
+	if (WFEOUTPUT != "none"){
+		File.rename(RESULTSPATH + "json_out.txt", RESULTSPATH + WFEOUTPUT);
+		//call("CallLog.shout", "... renamed");
+		return "renamed";
+	}
+	return "not renamed";
+} 
+
 
 function getWFEOUTPUT(){
 	JSON_READER = "/JSON_Read.js";
