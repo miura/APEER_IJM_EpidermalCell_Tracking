@@ -23,13 +23,13 @@
         },
         "outputs": {
             "RESULTSDATA1": {
-                "type:list[file]": {}
+                "type:file": {}
             },
             "RESULTSDATA2": {
-                "type:list[file]": {}
+                "type:file": {}
             },
             "RESULTSDATA3": {
-                "type:list[file]": {}
+                "type:file": {}
             }
         }
     },

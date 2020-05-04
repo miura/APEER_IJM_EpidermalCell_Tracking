@@ -20,7 +20,7 @@ if (command == "test"){
 } else if (command == "checkJSON_ReadExists"){
 	out = checkJSON_ReadExists( para ); // out is null ""
 } else if (command == "JSON_OUT"){
-	out = jsonOutV3( para ); // para should be comma separated values. see function for more details. 
+	out = jsonOutV4( para ); // para should be comma separated values. see function for more details. 
 }
 return out;
 
@@ -90,7 +90,7 @@ function checkJSON_ReadExists( JSON_READER ){
 //parameters
 // index 0: output folder path
 // index 1 - : filenames with extensions. 
-// maybe void
+// the single item is square bracketted - meaning that the out put is suppose to be a list of file. 
 function jsonOutV2( parameters ) {
 	pA = split(parameters, ",");
 	RESULTSPATH = pA[0];
@@ -121,7 +121,8 @@ function jsonOutV2( parameters ) {
 //parameters
 // index 0: output folder path
 // index 1 - : filenames with extensions. 
-function jsonOutV3( parameters ) {
+// without brackets. no lists. 
+function jsonOutV4( parameters ) {
 	pA = split(parameters, ",");
 	RESULTSPATH = pA[0];
 	call("CallLog.shout", "... results path:" + RESULTSPATH);	
@@ -129,12 +130,13 @@ function jsonOutV3( parameters ) {
 	
 	print(jsonout,"{");
 	for (i = 1; i < pA.length; i++){
-		print(jsonout,"\"RESULTSDATA\"" + i + ": [");
-		print(jsonout,"\t\"" + pA[i] + "\"");
+		//print(jsonout,"\"RESULTSDATA\"" + i + ": [");
 		if (i == pA.length -1)
-			print(jsonout,"\t]");
+			print(jsonout,"\"RESULTSDATA" + i + "\" : \"" + pA[i] + "\"");
+			//print(jsonout,"\t]");
 		else 
-			print(jsonout,"\t],");
+			print(jsonout,"\"RESULTSDATA" + i + "\" : \"" + pA[i] + "\",");
+			//print(jsonout,"\t],");
 	}
 	print(jsonout,"}");
 	File.close(jsonout);
