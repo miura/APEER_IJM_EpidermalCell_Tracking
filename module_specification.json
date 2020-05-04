@@ -23,19 +23,13 @@
         },
         "outputs": {
             "RESULTSDATA1": {
-                "type:file": {
-                  "format": "tiff"
-                }
+                "type:file": {}
             },
             "RESULTSDATA2": {
-                "type:file": {
-                  "format": "tiff"
-                }
+                "type:file": {}
             },
             "RESULTSDATA3": {
-                "type:file": {
-                  "format": "csv"
-                }
+                "type:file": {}
             }
         }
     },
@@ -67,23 +61,6 @@
                 "widget:textbox": {}
             }            
         },
-        "outputs": {
-          "RESULTSDATA1": {
-            "label": "Label Stack",
-            "index": 1,
-            "description": "Cell Label stack as TIFF"
-          },
-          "RESULTSDATA2": {
-            "label": "Track Stack",
-            "index": 2,
-            "description": "Cell Tracks stack as TIFF"
-          },
-          "RESULTSDATA3": {
-            "label": "Track Table",
-            "index": 3,
-            "description": "Track table as CSV file"
-          }
-        
-        }    
+        "outputs": {}    
     }
 }
