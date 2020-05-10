@@ -135,7 +135,6 @@ function main() {
 	call("CallLog.shout", "Finished processing, time: " + tt);
 	run("Close All");
 	call("CallLog.shout", "Closed");
-	//shout("test print");
 	eval("script", "System.exit(0);");
     print(" TEST from macro print command ");
     IJ.log(" TEST from macro ij.log command ");

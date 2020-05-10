@@ -90,7 +90,8 @@ function checkJSON_ReadExists( JSON_READER ){
 //parameters
 // index 0: output folder path
 // index 1 - : filenames with extensions. 
-// the single item is square bracketted - meaning that the out put is suppose to be a list of file. 
+// items are square bracketted - meaning that the output is suppose to be a list of files.
+// this does not work well.  
 function jsonOutV2( parameters ) {
 	pA = split(parameters, ",");
 	RESULTSPATH = pA[0];
@@ -121,7 +122,7 @@ function jsonOutV2( parameters ) {
 //parameters
 // index 0: output folder path
 // index 1 - : filenames with extensions. 
-// without brackets. no lists. 
+// without brackets. files in a comma separated lines (one file per line) 
 function jsonOutV4( parameters ) {
 	pA = split(parameters, ",");
 	RESULTSPATH = pA[0];
@@ -154,7 +155,7 @@ function jsonOutV4( parameters ) {
 //parameters
 // index 0: output folder path
 // index 1 - : filenames with extensions. 
-// without brackets. no lists. in one line, no new lines.  
+// without brackets. no lists. in one line, no new lines.  this is successful. 
 function jsonOutV5( parameters ) {
 	pA = split(parameters, ",");
 	RESULTSPATH = pA[0];
