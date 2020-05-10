@@ -2,7 +2,7 @@
     "spec": {
         "inputs": {
             "input_files": {
-                "type:list[file]": {}
+                "type:file": {}
             },
             "prefix": {
                 "type:string": {},

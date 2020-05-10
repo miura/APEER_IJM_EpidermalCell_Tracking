@@ -19,8 +19,8 @@ runMacro( libmacro , "checkJSON_ReadExists;" + JSON_READER);
 
 // Get WFE Json values as global vars
 call("CallLog.shout", "Reading JSON Parameters");
-INPUTFILES = runMacro(JSON_READER, "settings.input_files[0]");
-INPUTSTACK = runMacro(JSON_READER, "settings.input_files[0]");
+INPUTFILES = runMacro(JSON_READER, "settings.input_files");
+INPUTSTACK = runMacro(JSON_READER, "settings.input_files");
 PREFIX = runMacro(JSON_READER, "settings.prefix");
 STACKNAME = runMacro(JSON_READER, "settings.labelstack_name");
 OUTTRACKSTACKNAME = runMacro(JSON_READER, "settings.trackstack_name");
