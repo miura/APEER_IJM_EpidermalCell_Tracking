@@ -8,6 +8,10 @@
                 "type:string": {},
                 "default": "Tiff"
             },
+            "results_filename": {
+                "type:string": {},
+                "default": "tracking_results.csv"
+            },            
             "labelstack_name": {
                 "type:string": {},
                 "default": "Track_Labeled_Cells"
@@ -15,23 +19,19 @@
             "trackstack_name": {
                 "type:string": {},
                 "default": "Track_Overlay"
-            },
-            "results_filename": {
-                "type:string": {},
-                "default": "tracking_results.csv"
             }
         },
         "outputs": {
+            "RESULTSDATA3": {
+                "type:file": {
+                  "format": "csv"
+                }
+            },
             "RESULTSDATA1": {
                 "type:file": {}
             },
             "RESULTSDATA2": {
                 "type:file": {}
-            },
-            "RESULTSDATA3": {
-                "type:file": {
-                  "format": "csv"
-                }
             }
         }
     },
@@ -47,6 +47,11 @@
                 "label": "Filter files (e.g .png)",
                 "widget:textbox": {}
             },
+            "results_filename": {
+                "index": 2,
+                "label": "CSV file name",
+                "widget:textbox": {}
+            }            
             "labelstack_name": {
                 "index": 3,
                 "label": "Label File Name",
@@ -57,28 +62,23 @@
                 "label": "Track File Name",
                 "widget:textbox": {}
             },
-            "results_filename": {
-                "index": 5,
-                "label": "CSV file name",
-                "widget:textbox": {}
-            }
         },
         "outputs": {
-            "RESULTSDATA1": {
-                "label": "Label Stack",
-                "index": 3,
-                "description": "Cell Label stack as TIFF"
-            },
-            "RESULTSDATA2": {
-                "label": "Track Stack",
-                "index": 2,
-                "description": "Cell Tracks stack as TIFF"
-            },
             "RESULTSDATA3": {
                 "label": "Track Table",
                 "index": 1,
                 "description": "Track table as CSV file"
-            }
+            }            
+            "RESULTSDATA1": {
+                "label": "Label Stack",
+                "index": 2,
+                "description": "Cell Label stack as TIFF"
+            },
+            "RESULTSDATA2": {
+                "label": "Track Stack",
+                "index": 3,
+                "description": "Cell Tracks stack as TIFF"
+            },
         }
     }
 }
