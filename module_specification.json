@@ -49,24 +49,24 @@
             },
             "labelstack_name": {
                 "index": 3,
-                "label": "Filename (default output.tif)",
+                "label": "Label File Name",
                 "widget:textbox": {}
             },
             "trackstack_name": {
                 "index": 4,
-                "label": "Filename (default output.tif)",
+                "label": "Track File Name",
                 "widget:textbox": {}
             },
             "results_filename": {
                 "index": 5,
-                "label": "Filename (default output.tif)",
+                "label": "CSV file name",
                 "widget:textbox": {}
             }
         },
         "outputs": {
             "RESULTSDATA1": {
                 "label": "Label Stack",
-                "index": 1,
+                "index": 3,
                 "description": "Cell Label stack as TIFF"
             },
             "RESULTSDATA2": {
@@ -76,7 +76,7 @@
             },
             "RESULTSDATA3": {
                 "label": "Track Table",
-                "index": 3,
+                "index": 1,
                 "description": "Track table as CSV file"
             }
         }
