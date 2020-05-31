@@ -2,7 +2,9 @@
   ImageJ macro for 2D Epidermal Cell tracking
   Step 3 procedure in "Bioimage Data Analysis (2016)" Chapt. 7 
   based on example generate_stack.ijm
-  Kota Miura (2020)
+  
+  MIT License
+  Copyright (c) 2020 Kota Miura
  */
 
 // General global vars

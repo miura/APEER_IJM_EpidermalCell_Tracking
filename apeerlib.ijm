@@ -1,3 +1,10 @@
+/* 
+* A ImageJ macro library to be called from other macro
+* Some utility type of functions for writing APEER codes
+* 
+* MIT License
+* Copyright (c) 2020 Kota Miura
+*/
 arg = getArgument();
 
 args = split(arg, ";");
