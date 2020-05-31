@@ -40,7 +40,7 @@
             "input_files": {
                 "index": 0,
                 "widget:none": null,
-                "label": "Input files"
+                "label": "Input file"
             },
             "prefix": {
                 "index": 1,
